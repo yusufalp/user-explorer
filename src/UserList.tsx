@@ -3,7 +3,7 @@ import { graphql, useLazyLoadQuery } from "react-relay";
 
 import { UserListQuery } from "./__generated__/UserListQuery.graphql";
 
-const UserList: React.FC = () => {
+const UserList: React.FC = ({ filters }) => {
   const data = useLazyLoadQuery<UserListQuery>(
     graphql`
       query UserListQuery($results: Int, $nat: String) {
@@ -24,8 +24,8 @@ const UserList: React.FC = () => {
       }
     `,
     {
-      results: 200,
-      nat: "US",
+      results: filters.results,
+      nat: filters.nat,
     }
   );
 
