@@ -14,10 +14,16 @@ function App() {
   ) => {
     const { name, value } = e.target;
 
-    setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+    if (name === "results") {
+      const parsed = parseInt(value, 10);
+      if (!isNaN(parsed) && parsed >= 1) {
+        setFilters((prevFilters) => ({ ...prevFilters, [name]: parsed }));
+      }
+    } else {
+      setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+    }
   };
 
-  console.log("filters :>> ", filters);
   return (
     <>
       <h1>Users</h1>
