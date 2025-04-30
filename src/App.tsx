@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import UserList from "./UserList";
+import { nationalities } from "./constants/nationalities";
 
 function App() {
   return (
@@ -11,10 +12,13 @@ function App() {
         <label htmlFor="results">Results</label>
         <input type="number" name="results" id="results" value="200" />
         <label htmlFor="nat">Nationality</label>
-        <select name="nat" id="nat" defaultValue="us">
-          <option value="us">US</option>
+        <select name="nat" id="nat" defaultValue="US">
+          {nationalities.map((nat) => (
+            <option value={nat}>{nat}</option>
+          ))}
         </select>
       </form>
+      
       <Suspense fallback="Loading...">
         <UserList />
       </Suspense>
