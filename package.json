@@ -11,17 +11,24 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-relay": "^0.0.0-main-217f70a9",
+    "relay-runtime": "^0.0.0-main-217f70a9"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@types/react-relay": "^18.2.0",
+    "@types/relay-runtime": "^18.2.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "babel-plugin-relay": "^18.2.0",
     "eslint": "^9.22.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "graphql": "^16.11.0",
+    "relay-compiler": "^0.0.0-main-217f70a9",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1"
