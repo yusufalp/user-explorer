@@ -9,7 +9,9 @@ function App() {
     nat: "US",
   });
 
-  const handleFiltersChange = (e) => {
+  const handleFiltersChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
 
     setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
@@ -45,7 +47,7 @@ function App() {
       </form>
 
       <Suspense fallback="Loading...">
-        <UserList filters={filters}/>
+        <UserList filters={filters} />
       </Suspense>
     </>
   );
