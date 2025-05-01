@@ -16,7 +16,8 @@ function App() {
 
     if (name === "results") {
       const parsed = parseInt(value, 10);
-      if (!isNaN(parsed) && parsed >= 1) {
+      
+      if (!isNaN(parsed) && parsed >= 1 && parsed <= 5000) {
         setFilters((prevFilters) => ({ ...prevFilters, [name]: parsed }));
       }
     } else {
