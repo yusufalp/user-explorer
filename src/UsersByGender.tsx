@@ -1,7 +1,5 @@
 import React from "react";
-
 import { User } from "./types/User";
-
 import { calculateGenderPercentage } from "./utils/calculateGenderPercentage";
 
 type Props = {
@@ -9,14 +7,17 @@ type Props = {
 };
 
 const UsersByGender: React.FC<Props> = ({ users }) => {
-  const percentages = calculateGenderPercentage(users);
+  const genders = calculateGenderPercentage(users);
 
   return (
     <div>
-      <p>By Gender</p>
+      <h2>By Gender</h2>
       <ul>
-        <li>Male: {percentages.male || 0}%</li>
-        <li>Female: {percentages.female || 0}%</li>
+        {Object.entries(genders).map(([gender, percentage]) => (
+          <li key={gender}>
+            {gender.charAt(0).toUpperCase() + gender.slice(1)}: {percentage}%
+          </li>
+        ))}
       </ul>
     </div>
   );
