@@ -6,6 +6,9 @@ import UsersByGender from "./UsersByGender";
 
 import { User } from "./types/User";
 import { Filter } from "./types/Filter";
+import UsersByAgeGroup from "./UsersByAgeGroup";
+import UsersByLastNameLength from "./UsersByLastNameLength";
+import UsersByState from "./UsersByState";
 
 type Props = {
   filters: Filter;
@@ -40,12 +43,20 @@ const UserList: React.FC<Props> = ({ filters }) => {
     }
   );
 
-  console.log(data)
+  const users: User[] = (data?.users ?? []).filter((u): u is User => u != null);
+
+  if (users.length === 0) return <p>No users found.</p>;
 
   return (
-    <UsersByGender
-      users={(data?.users ?? []).filter((u): u is User => u != null)}
-    />
+    <>
+      <UsersByGender users={users} />
+
+      <UsersByAgeGroup users={users} />
+
+      <UsersByLastNameLength users={users} />
+
+      <UsersByState users={users} />
+    </>
   );
 };
 
