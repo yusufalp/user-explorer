@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 
 import UserList from "./UserList";
 import UserListForm from "./UserListForm";
+import { nationalities } from "./constants/nationalities";
 
 function App() {
   const [filters, setFilters] = useState({
@@ -20,8 +21,10 @@ function App() {
       if (!isNaN(parsed) && parsed >= 1 && parsed <= 5000) {
         setFilters((prevFilters) => ({ ...prevFilters, [name]: parsed }));
       }
-    } else {
-      setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+    } else if (name === "nat") {
+      if (nationalities.includes(value)) {
+        setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
+      }
     }
   };
 
