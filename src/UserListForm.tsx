@@ -25,9 +25,10 @@ const UserListForm: React.FC<Props> = ({ filters, handleFiltersChange }) => {
       <select
         name="nat"
         id="nat"
-        defaultValue={filters.nat}
+        value={filters.nat || ""}
         onChange={handleFiltersChange}
       >
+        <option value="" disabled>Select Nationality</option>
         {nationalities.map((nat) => (
           <option key={nat} value={nat}>
             {nat}
