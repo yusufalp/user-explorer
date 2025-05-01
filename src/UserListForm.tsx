@@ -1,11 +1,7 @@
 import React from "react";
 
 import { nationalities } from "./constants/nationalities";
-
-type Filter = {
-  results: number;
-  nat: string;
-};
+import { Filter } from "./types/Filter";
 
 type Props = {
   filters: Filter;

@@ -2,11 +2,10 @@ import React from "react";
 import { graphql, useLazyLoadQuery } from "react-relay";
 
 import { UserListQuery } from "./__generated__/UserListQuery.graphql";
+import UsersByGender from "./UsersByGender";
 
-type Filter = {
-  results: number;
-  nat: string;
-};
+import { User } from "./types/User";
+import { Filter } from "./types/Filter";
 
 type Props = {
   filters: Filter;
@@ -25,6 +24,9 @@ const UserList: React.FC<Props> = ({ filters }) => {
           location {
             state
           }
+          dob {
+            age
+          }
           login {
             uuid
           }
@@ -38,14 +40,12 @@ const UserList: React.FC<Props> = ({ filters }) => {
     }
   );
 
+  console.log(data)
+
   return (
-    <ul>
-      {data?.users?.map((user) => (
-        <li key={user?.login?.uuid}>
-          {user?.name?.first} {user?.name?.last}
-        </li>
-      ))}
-    </ul>
+    <UsersByGender
+      users={(data?.users ?? []).filter((u): u is User => u != null)}
+    />
   );
 };
 
