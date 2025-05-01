@@ -12,7 +12,7 @@ const UsersByState: React.FC<Props> = ({ users }) => {
   return (
     <div>
       <h2>Top 10 States by User Percentage</h2>
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul>
         {Object.entries(topStates).map(([state, percentage]) => (
           <li key={state}>
             <strong>{state}</strong>: {percentage}%
