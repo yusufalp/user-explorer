@@ -1,4 +1,4 @@
 export type Filter = {
   results: number;
-  nat: string;
+  nat?: string | null;
 };

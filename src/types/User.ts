@@ -1,11 +1,5 @@
-export type Gender =
-  | "female"
-  | "male"
-  | null
-  | undefined;
-
 export type User = {
-  gender: Gender;
+  gender: "female" | "male" | null | undefined;
   name:
     | {
         first: string | null | undefined;
