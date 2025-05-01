@@ -1,7 +1,7 @@
 import { Suspense, useState } from "react";
 
 import UserList from "./UserList";
-import { nationalities } from "./constants/nationalities";
+import UserListForm from "./UserListForm";
 
 function App() {
   const [filters, setFilters] = useState({
@@ -16,7 +16,7 @@ function App() {
 
     if (name === "results") {
       const parsed = parseInt(value, 10);
-      
+
       if (!isNaN(parsed) && parsed >= 1 && parsed <= 5000) {
         setFilters((prevFilters) => ({ ...prevFilters, [name]: parsed }));
       }
@@ -29,29 +29,10 @@ function App() {
     <>
       <h1>Users</h1>
 
-      <form>
-        <label htmlFor="results">Results</label>
-        <input
-          type="number"
-          name="results"
-          id="results"
-          value={filters.results}
-          onChange={handleFiltersChange}
-        />
-        <label htmlFor="nat">Nationality</label>
-        <select
-          name="nat"
-          id="nat"
-          defaultValue={filters.nat}
-          onChange={handleFiltersChange}
-        >
-          {nationalities.map((nat) => (
-            <option key={nat} value={nat}>
-              {nat}
-            </option>
-          ))}
-        </select>
-      </form>
+      <UserListForm
+        filters={filters}
+        handleFiltersChange={handleFiltersChange}
+      />
 
       <Suspense fallback="Loading...">
         <UserList filters={filters} />
