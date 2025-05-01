@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4e71baf8fa61a2168756b442f891232d>>
+ * @generated SignedSource<<2362000792074dead0ba66052683a1be>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,6 +16,9 @@ export type UserListQuery$variables = {
 };
 export type UserListQuery$data = {
   readonly users: ReadonlyArray<{
+    readonly dob: {
+      readonly age: number | null | undefined;
+    } | null | undefined;
     readonly gender: Gender | null | undefined;
     readonly location: {
       readonly state: string | null | undefined;
@@ -119,6 +122,24 @@ v2 = [
       {
         "alias": null,
         "args": null,
+        "concreteType": "UserDob",
+        "kind": "LinkedField",
+        "name": "dob",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "age",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
         "concreteType": "UserLogin",
         "kind": "LinkedField",
         "name": "login",
@@ -169,16 +190,16 @@ return {
     "selections": (v2/*: any*/)
   },
   "params": {
-    "cacheID": "6dbdae72ef6603bf792848a77f6c387a",
+    "cacheID": "d69c7a9552024353e5fe1027ac62fc2b",
     "id": null,
     "metadata": {},
     "name": "UserListQuery",
     "operationKind": "query",
-    "text": "query UserListQuery(\n  $results: Int\n  $nat: String\n) {\n  users(results: $results, nat: $nat) {\n    gender\n    name {\n      first\n      last\n    }\n    location {\n      state\n    }\n    login {\n      uuid\n    }\n    nat\n  }\n}\n"
+    "text": "query UserListQuery(\n  $results: Int\n  $nat: String\n) {\n  users(results: $results, nat: $nat) {\n    gender\n    name {\n      first\n      last\n    }\n    location {\n      state\n    }\n    dob {\n      age\n    }\n    login {\n      uuid\n    }\n    nat\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c030cf8193ad2c442673cbe7d1c8e8c3";
+(node as any).hash = "f26cb8e995e9108331b03651d474a0ad";
 
 export default node;
